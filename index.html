@@ -11,10 +11,33 @@
 
 <body>
 
+    <!-- NAVBAR START -->
+    <nav class="navbar">
+        <div class="nav-logo">🚀 Community</div>
+
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Contributors</a></li>
+            <li><a href="https://github.com/Jayanta2004" target="_blank">GitHub</a></li>
+        </ul>
+    </nav>
+    <!-- NAVBAR END -->
+
     <!-- Main heading of the website -->
-    <h1>🚀 Community Hall of Fame</h1>
+    <h1><span id="typewriter"></span></h1>
     <p class="subtitle">An Open Source Project built by the Community, for the Community.</p>
 
+
+    <!-- 🔍 SEARCH INPUT (ADDED) -->
+    <input type="text" id="searchInput" placeholder="Search contributor by name..." onkeyup="filterCards()"
+        style="padding:10px; width:300px; max-width:90%; margin:20px auto; display:block;">
     <!-- Container that holds all the profile cards -->
     <div class="card-container">
 
@@ -119,10 +142,68 @@
         </div>
 
         <div class="card">
+            <img src="images/agarwalpranav0711.jpg" alt="Pranav Agarwal Photo" class="card-img">
+            <h2>Pranav Agarwal</h2>
+            <span class="role">Frontend Developer</span>
+            <p>"Starting my open-source journey with ECWoC 🚀"</p>
+            <a href="https://github.com/agarwalpranav0711" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
+        <div class="card">
+            <img src="images/NEERU.jpeg" alt="Neeru's Photo" class="card-img">
+            <h2>Neeru</h2>
+            <span class="role">Open Source Contributor</span>
+            <p>"CSE student passionate about exploring and contributing to Open Source projects."</p>
+            <a href="https://github.com/neeru24" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
+        <div class="card prithwish-custom-style">
+            <img src="images/Prithwish2025.jpg" alt="Prithwish's Photo" class="card-img">
+            <h2>Prithwish Pal</h2>
+            <span class="role">Contributor</span>
+            <p>Hi! This is my first open-source contribution through ECWoC. Looking forward to contributing more and
+                learning along the way.</p>
+            <a href="https://github.com/Prithwish2025" class="card-btn" target="_blank">Github</a>
+        </div>
+
+        <div class="card">
+            <img src="images/abhijeet.jpg" alt="Abhijeet Padhy Photo" class="card-img">
+            <h2>Abhijeet Padhy</h2>
+            <span class="role">Open Source Contributor</span>
+            <p>"Excited to contribute to open source🚀"</p>
+            <a href="https://github.com/Abhijeet-980" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
+        <div class="card">
+            <img src="images/ubanand36.jpg" alt="User Photo" class="card-img">
+            <h2>Anand Kumar Patel</h2>
+            <span class="role">Developer</span>
+            <p>"Coding is not just skill, it's an art of representing ideas into reality"</p>
+            <a href="https://www.linkedin.com/in/anand-kumar-patel-ba9607371/" class="card-btn"
+                target="_blank">Linkedin</a>
+        </div>
+
+        <div class="card">
+            <img src="images/satyam-pandey.png" alt="Satyam Pandey's Photo" class="card-img">
+            <h2>Satyam Pandey</h2>
+            <span class="role">Contributor</span>
+            <p>"Hello world! This is my first PR."</p>
+            <a href="https://github.com/satyam-pandey" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
+        <div class="card">
+            <img src="images/rohitshinde-tech.jpg" alt="Rohit Shinde's Photo" class="card-img">
+            <h2>Rohit Shinde</h2>
+            <span class="role">Contributor</span>
+            <p>"Exploring open source and learning GitHub through my first contribution."</p>
+            <a href="https://github.com/rohitshinde-tech" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
+        <div class="card">
             <img src="images/krishnx21.jpg" alt="Krishna Kumar's Photo" class="card-img">
             <h2>Krishna Kumar</h2>
             <span class="role">Contributor</span>
-            <p>"Excited to make my first open-source contribution through ECWoC 2026 "</p>
+            <p>"Excited to make my first open-source contribution through ECWoC 2026"</p>
             <a href="https://github.com/krishnx21" class="card-btn" target="_blank">GitHub</a>
         </div>
 
@@ -131,6 +212,102 @@
         <!-- ADD YOUR NEW CARD ABOVE THIS COMMENT -->
 
     </div> <!-- End of card-container -->
+
+    <!-- FOOTER START -->
+    <footer class="footer">
+        <p>© 2026 Community Hall of Fame</p>
+        <p>
+            Built with ❤️ by the Open Source Community ·
+            <a href="https://github.com/Jayanta2004" target="_blank">GitHub</a>
+        </p>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    </script>
+
+    <!-- 🔍 SEARCH FILTER SCRIPT (ADDED) -->
+    <script>
+        function filterCards() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".card");
+
+            cards.forEach(card => {
+                const name = card.querySelector("h2").innerText.toLowerCase();
+                card.style.display = name.includes(input) ? "block" : "none";
+            });
+        }
+
+
+    </script>
+
+    <script>
+        // ----- TYPEWRITER LOOP -----
+        const typewriter = document.getElementById('typewriter');
+
+        const phrases = [
+            "🚀 Community Hall of Fame",
+            "Built by the Community",
+            "Open Source for Everyone",
+            "Contribute, Learn, Grow"
+        ];
+
+        let currentPhrase = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        let speed = 100; // typing speed (ms per character)
+
+        function type() {
+            const fullText = phrases[currentPhrase];
+
+            if (isDeleting) {
+                currentChar--;
+                typewriter.textContent = fullText.substring(0, currentChar);
+            } else {
+                currentChar++;
+                typewriter.textContent = fullText.substring(0, currentChar);
+            }
+
+            // Adjust speed for deleting vs typing
+            let typingSpeed = isDeleting ? speed / 2 : speed;
+
+            // When phrase is complete
+            if (!isDeleting && currentChar === fullText.length) {
+                typingSpeed = 1500; // wait before deleting
+                isDeleting = true;
+            }
+            // When deletion is complete
+            else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                typingSpeed = 500; // wait before typing next phrase
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+
+        // Start typewriter
+        type();
+
+
+        // ----- PARALLAX EFFECT -----
+        const heroHeading = document.querySelector('h1');
+        const heroSubtitle = document.querySelector('.subtitle');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            heroHeading.style.transform = `translateY(${scrollY * 0.2}px)`;  // slower
+            heroSubtitle.style.transform = `translateY(${scrollY * 0.15}px)`; // slightly slower
+        });
+    </script>
+
 
 </body>
 
